@@ -1,16 +1,19 @@
-import React, { useContext } from "react";
-import { Context } from "../context/cartContext";
+import React from "react";
+import { useContext } from "react";
+import { CartContext } from "../contexts/CartContext";
 
 function Product({ product }) {
-  const { cart, addToCart } = useContext(Context);
-
+  const quantity = {
+    ...product,
+    quantity: 1,
+  };
+  const { addToCart } = useContext(CartContext);
   return (
     <div className="col-3">
       <div
         className="card shadow-sm "
         style={{
           maxHeight: "450px",
-          height: "400px",
           margin: "20px 10px",
         }}
       >
@@ -27,17 +30,19 @@ function Product({ product }) {
 
         <div className="card-body">
           <p className="card-text">{product.title}</p>
-          <div className="d-flex justify-content-between align-items-start ">
+          <div className="d-flex justify-content-between align-items-center">
             <div className="btn-group">
               <button
                 type="button"
-                className="btn btn-md btn-success"
-                onClick={() => addToCart(product)}
+                className="btn btn-sm btn-success"
+                onClick={() => {
+                  addToCart(quantity);
+                }}
               >
                 Add To Cart
               </button>
             </div>
-            <p className="text-muted">{product.price}</p>
+            <p className="text-muted mt-3">{product.price}$</p>
           </div>
         </div>
       </div>

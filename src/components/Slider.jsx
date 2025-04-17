@@ -16,7 +16,7 @@ function Slider() {
           <div className="carousel-inner">
             <div className="carousel-item active">
               <img
-                src={"https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg"}
+                src={Image1}
                 className="d-block w-100"
                 height="550px"
                 alt="..."
@@ -24,7 +24,7 @@ function Slider() {
             </div>
             <div className="carousel-item">
               <img
-                src={"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"}
+                src={Image2}
                 className="d-block w-100"
                 height="550px"
                 alt="..."
@@ -32,7 +32,7 @@ function Slider() {
             </div>
             <div className="carousel-item">
               <img
-                src={"https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpgs"}
+                src={Image1}
                 className="d-block w-100"
                 height="550px"
                 alt="..."

@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Product from "./Product";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
-
   const FetchData = async () => {
     try {
       const response = await fetch("https://fakestoreapi.com/products");

@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 
 import { useNavigate } from "react-router";
 import { Bounce, toast } from "react-toastify";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -9,44 +11,33 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const el = useRef(null);
-
-  const notify = () =>
-    toast("Login Success!", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-      transition: Bounce,
-    });
-
   const handleFrom = (e) => {
     e.preventDefault();
-    // if (email === "m@m.com" && password === "123") {
-    //   notify();
-    //   navigate("/dashboard");
-    // } else {
-    //   console.log("Login failed!!!");
-    //   return;
-    // }
+
+    if (email === "m@m.com" && password === "123") {
+      const userData = {
+        email,
+        password,
+      };
+      console.log(userData);
+      toast.success("Login success!");
+
+      navigate("/");
+    } else {
+      toast.error("Login Failed!");
+      return;
+    }
     // send data to backend;
-    el.current = email;
   };
-  useEffect(() => {
-    el.current = email;
-  }, [email]);
+
   return (
     <>
+      <Header />
       <div className="content">
         <div className="card-container">
           <div className="card mt-5 card-style">
             <h1 className="text-center">Login </h1>
             <form onSubmit={handleFrom}>
-              <p>{el.current}</p>
               <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">
                   Email address
@@ -86,6 +77,7 @@ function Login() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
